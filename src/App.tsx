@@ -44,7 +44,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
       return (
         <div className="min-h-screen bg-background flex flex-col items-center justify-center px-6">
           <div className="text-center animate-fade-in max-w-sm">
-            <span className="text-6xl">😿</span>
+            <img src="/logo.png" alt="DompetKu Logo" className="w-24 h-24 mx-auto drop-shadow-sm mb-4" />
             <h2 className="text-xl font-bold text-destructive mt-4 mb-2">Login Gagal</h2>
             <p className="text-sm text-muted-foreground mb-6">
               Terjadi kesalahan dari server penyedia login (Google/Supabase). Mohon pastikan pengaturan Client Secret sudah benar.
@@ -67,7 +67,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
       return (
         <div className="min-h-screen bg-background flex items-center justify-center">
           <div className="text-center animate-fade-in">
-            <span className="text-5xl">🐱</span>
+            <img src="/logo.png" alt="DompetKu Logo" className="w-20 h-20 mx-auto animate-pulse" />
             <p className="text-sm text-muted-foreground font-medium mt-3">Authenticating...</p>
           </div>
         </div>

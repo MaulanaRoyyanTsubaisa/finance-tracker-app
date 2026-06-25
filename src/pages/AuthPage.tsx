@@ -86,7 +86,7 @@ export default function AuthPage() {
 
         {/* Mascot */}
         <div className="text-center">
-          <span className="text-6xl">🐱</span>
+          <img src="/logo.png" alt="DompetKu Logo" className="w-20 h-20 mx-auto drop-shadow-sm" />
           <h1 className="text-2xl font-extrabold mt-3">
             {isForgot ? t("forgotTitle") : isLogin ? t("welcomeBack") : t("newHere")}
           </h1>
