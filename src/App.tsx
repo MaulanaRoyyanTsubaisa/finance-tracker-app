@@ -39,8 +39,31 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   if (!user && !isGuestMode()) {
-    // Prevent redirecting if we are in the middle of an OAuth flow (token is in URL)
-    if (window.location.hash.includes('access_token') || window.location.hash.includes('error_description') || window.location.search.includes('code=')) {
+    // Handle OAuth errors gracefully
+    if (window.location.href.includes('error_description')) {
+      return (
+        <div className="min-h-screen bg-background flex flex-col items-center justify-center px-6">
+          <div className="text-center animate-fade-in max-w-sm">
+            <span className="text-6xl">😿</span>
+            <h2 className="text-xl font-bold text-destructive mt-4 mb-2">Login Gagal</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Terjadi kesalahan dari server penyedia login (Google/Supabase). Mohon pastikan pengaturan Client Secret sudah benar.
+            </p>
+            <button 
+              onClick={() => {
+                window.location.href = '/auth';
+              }}
+              className="w-full py-3 rounded-2xl bg-primary text-primary-foreground font-bold hover:opacity-90 transition-opacity"
+            >
+              Kembali ke Login
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // Prevent redirecting if we are in the middle of a successful OAuth flow (token is in URL)
+    if (window.location.hash.includes('access_token') || window.location.search.includes('code=')) {
       return (
         <div className="min-h-screen bg-background flex items-center justify-center">
           <div className="text-center animate-fade-in">
