@@ -39,6 +39,17 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   if (!user && !isGuestMode()) {
+    // Prevent redirecting if we are in the middle of an OAuth flow (token is in URL)
+    if (window.location.hash.includes('access_token') || window.location.hash.includes('error_description') || window.location.search.includes('code=')) {
+      return (
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <div className="text-center animate-fade-in">
+            <span className="text-5xl">🐱</span>
+            <p className="text-sm text-muted-foreground font-medium mt-3">Authenticating...</p>
+          </div>
+        </div>
+      );
+    }
     if (!isOnboardingDone()) return <Navigate to="/onboarding" replace />;
     return <Navigate to="/auth" replace />;
   }
