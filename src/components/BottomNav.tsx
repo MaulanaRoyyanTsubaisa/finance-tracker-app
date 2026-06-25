@@ -1,0 +1,53 @@
+import { Home, PlusCircle, PieChart, Trophy, ClockArrowUp } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+import type { TranslationKey } from "@/lib/i18n";
+
+const NAV_ITEMS: { path: string; icon: typeof Home; labelKey: TranslationKey; isMain?: boolean }[] = [
+  { path: "/", icon: Home, labelKey: "navHome" },
+  { path: "/budgets", icon: PieChart, labelKey: "navBudget" },
+  { path: "/add", icon: PlusCircle, labelKey: "navAdd", isMain: true },
+  { path: "/history", icon: ClockArrowUp, labelKey: "navHistory" },
+  { path: "/achievements", icon: Trophy, labelKey: "navXp" },
+];
+
+export default function BottomNav() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { t } = useLanguage();
+
+  return (
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-xl border-t border-border/50 pb-safe">
+      <div className="grid grid-cols-5 items-center px-2 pt-1 pb-1 max-w-lg mx-auto">
+        {NAV_ITEMS.map(item => {
+          const active = location.pathname === item.path;
+          if (item.isMain) {
+            return (
+              <div key={item.path} className="flex justify-center">
+                <button
+                  onClick={() => navigate(item.path)}
+                  aria-label={t(item.labelKey)}
+                  className="flex items-center justify-center w-14 h-14 -mt-6 rounded-full gradient-hero shadow-soft text-primary-foreground transition-transform active:scale-95"
+                >
+                  <item.icon className="w-7 h-7" />
+                </button>
+              </div>
+            );
+          }
+          return (
+            <button
+              key={item.path}
+              onClick={() => navigate(item.path)}
+              className={`flex flex-col items-center justify-center gap-1 h-14 rounded-xl transition-colors ${
+                active ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              <item.icon className="w-5 h-5 shrink-0" strokeWidth={active ? 2.5 : 2} />
+              <span className="text-[10px] font-semibold leading-none">{t(item.labelKey)}</span>
+            </button>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
