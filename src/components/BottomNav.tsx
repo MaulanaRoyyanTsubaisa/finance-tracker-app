@@ -17,8 +17,8 @@ export default function BottomNav() {
   const { t } = useLanguage();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-xl border-t border-border/50 pb-safe">
-      <div className="grid grid-cols-5 items-center px-2 pt-1 pb-1 max-w-lg mx-auto">
+    <nav className="fixed bottom-6 left-4 right-4 z-50 max-w-lg mx-auto pb-safe">
+      <div className="clay-card bg-card/90 backdrop-blur-xl px-2 py-2 grid grid-cols-5 items-center">
         {NAV_ITEMS.map(item => {
           const active = location.pathname === item.path;
           if (item.isMain) {
@@ -27,7 +27,7 @@ export default function BottomNav() {
                 <button
                   onClick={() => navigate(item.path)}
                   aria-label={t(item.labelKey)}
-                  className="flex items-center justify-center w-14 h-14 -mt-6 rounded-full gradient-hero shadow-soft text-primary-foreground transition-transform active:scale-95"
+                  className="flex items-center justify-center w-14 h-14 -mt-8 rounded-full clay-btn text-primary-foreground transition-transform"
                 >
                   <item.icon className="w-7 h-7" />
                 </button>

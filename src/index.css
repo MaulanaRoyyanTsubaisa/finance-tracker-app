@@ -6,41 +6,41 @@
 
 @layer base {
   :root {
-    --background: 330 30% 98%;
-    --foreground: 250 30% 20%;
+    --background: 40 30% 98%;
+    --foreground: 215 25% 27%;
 
     --card: 0 0% 100%;
-    --card-foreground: 250 30% 20%;
+    --card-foreground: 215 25% 27%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 250 30% 20%;
+    --popover-foreground: 215 25% 27%;
 
-    --primary: 340 70% 65%;
+    --primary: 358 100% 80%; /* Soft Pink/Coral #ff9a9e */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 170 50% 85%;
-    --secondary-foreground: 170 40% 25%;
+    --secondary: 217 90% 81%; /* Pastel Lavender #a1c4fd */
+    --secondary-foreground: 215 25% 27%;
 
-    --muted: 250 20% 94%;
-    --muted-foreground: 250 10% 50%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 215 15% 60%;
 
-    --accent: 260 60% 80%;
-    --accent-foreground: 260 40% 25%;
+    --accent: 200 80% 88%; /* Soft Mint #c2e9fb */
+    --accent-foreground: 215 25% 27%;
 
-    --destructive: 0 70% 60%;
+    --destructive: 0 70% 65%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 250 20% 90%;
-    --input: 250 20% 90%;
-    --ring: 340 70% 65%;
+    --border: 40 20% 90%;
+    --input: 40 20% 90%;
+    --ring: 358 100% 80%;
 
-    --radius: 1rem;
+    --radius: 2rem;
 
-    --success: 150 60% 50%;
+    --success: 150 50% 60%;
     --success-foreground: 0 0% 100%;
-    --warning: 40 90% 60%;
+    --warning: 40 80% 70%;
     --warning-foreground: 40 80% 20%;
-    --info: 200 80% 65%;
+    --info: 217 90% 81%;
     --info-foreground: 0 0% 100%;
 
     --mint: 170 50% 85%;
@@ -68,33 +68,42 @@
   }
 
   .dark {
-    --background: 250 30% 8%;
-    --foreground: 330 20% 90%;
-    --card: 250 25% 12%;
-    --card-foreground: 330 20% 90%;
-    --popover: 250 25% 12%;
-    --popover-foreground: 330 20% 90%;
-    --primary: 340 70% 65%;
+    --background: 215 28% 17%;
+    --foreground: 40 30% 98%;
+
+    --card: 215 25% 22%;
+    --card-foreground: 40 30% 98%;
+
+    --popover: 215 25% 22%;
+    --popover-foreground: 40 30% 98%;
+
+    --primary: 358 80% 70%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 170 30% 25%;
-    --secondary-foreground: 170 40% 85%;
-    --muted: 250 20% 18%;
-    --muted-foreground: 250 10% 60%;
-    --accent: 260 40% 30%;
-    --accent-foreground: 260 40% 85%;
-    --destructive: 0 62.8% 30.6%;
+
+    --secondary: 217 60% 60%;
+    --secondary-foreground: 40 30% 98%;
+
+    --muted: 215 20% 26%;
+    --muted-foreground: 215 15% 70%;
+
+    --accent: 200 60% 60%;
+    --accent-foreground: 40 30% 98%;
+
+    --destructive: 0 60% 50%;
     --destructive-foreground: 210 40% 98%;
-    --border: 250 20% 20%;
-    --input: 250 20% 20%;
-    --ring: 340 70% 65%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+
+    --border: 215 25% 30%;
+    --input: 215 25% 30%;
+    --ring: 358 80% 70%;
+
+    --sidebar-background: 215 28% 17%;
+    --sidebar-foreground: 40 30% 98%;
+    --sidebar-primary: 358 80% 70%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 215 25% 30%;
+    --sidebar-accent-foreground: 40 30% 98%;
+    --sidebar-border: 215 25% 30%;
+    --sidebar-ring: 358 80% 70%;
   }
 }
 
@@ -108,6 +117,22 @@
 }
 
 @layer utilities {
+  .clay-card {
+    @apply bg-card rounded-[2rem] shadow-clay border border-white/40 dark:border-white/5;
+  }
+  .clay-card-primary {
+    @apply bg-primary text-primary-foreground rounded-[2rem] shadow-clay border border-white/20 dark:border-white/5;
+  }
+  .clay-btn {
+    @apply bg-primary text-primary-foreground rounded-2xl shadow-clay active:shadow-clay-active active:scale-[0.98] transition-all font-bold;
+  }
+  .clay-btn-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-2xl shadow-clay active:shadow-clay-active active:scale-[0.98] transition-all font-bold;
+  }
+  .clay-input {
+    @apply bg-input/50 rounded-2xl shadow-clay-inset outline-none focus:ring-2 ring-primary border-none transition-all;
+  }
+  
   .glass-card {
     @apply bg-card/80 backdrop-blur-lg border border-border/50 shadow-soft rounded-2xl;
   }

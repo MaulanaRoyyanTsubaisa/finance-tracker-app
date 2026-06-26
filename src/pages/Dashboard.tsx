@@ -47,7 +47,7 @@ export default function Dashboard({ store }: { store: ReturnType<typeof useFinan
         <div className="flex items-center gap-2">
           <Popover open={notifOpen} onOpenChange={setNotifOpen}>
             <PopoverTrigger asChild>
-              <button className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center relative">
+              <button className="w-10 h-10 rounded-2xl clay-btn-secondary flex items-center justify-center relative">
                 <Bell className="w-5 h-5 text-muted-foreground" />
                 {notifications.length > 0 && (
                   <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-destructive text-primary-foreground text-[9px] font-bold flex items-center justify-center">
@@ -84,7 +84,7 @@ export default function Dashboard({ store }: { store: ReturnType<typeof useFinan
           </Popover>
           <button
             onClick={() => navigate("/settings")}
-            className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center"
+            className="w-10 h-10 rounded-2xl clay-btn-secondary flex items-center justify-center"
             aria-label="Settings"
           >
             <SettingsIcon className="w-5 h-5 text-muted-foreground" />

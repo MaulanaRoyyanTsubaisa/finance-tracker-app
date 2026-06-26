@@ -15,7 +15,7 @@ export default function BalanceCard({ balance, totalIncome, totalExpense, mascot
   const { formatMoney } = useCurrency();
 
   return (
-    <div className="gradient-hero rounded-3xl p-6 text-primary-foreground shadow-soft animate-fade-in">
+    <div className="clay-card-primary p-6 animate-fade-in">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <p className="text-xs opacity-90 font-medium uppercase tracking-wide">{t("totalBalance")}</p>

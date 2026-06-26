@@ -91,21 +91,21 @@ export default function HistoryPage({ store }: { store: ReturnType<typeof useFin
   return (
     <div className="min-h-screen bg-background pb-24">
       <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-xl px-4 py-3 flex items-center gap-3">
-        <button onClick={() => navigate("/")} className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+        <button onClick={() => navigate("/")} className="w-10 h-10 rounded-2xl clay-btn-secondary flex items-center justify-center">
           <ArrowLeft className="w-5 h-5" />
         </button>
         <h1 className="font-extrabold text-lg flex-1">{t("historyTitle")}</h1>
         <div className="flex gap-1">
           <button
             onClick={() => exportToCSV(filtered, "transactions.csv")}
-            className="px-3 py-2 rounded-xl bg-muted text-xs font-bold text-muted-foreground hover:text-foreground transition-colors"
+            className="px-3 py-2 rounded-2xl clay-btn-secondary text-xs transition-colors"
             title={t("exportCSV")}
           >
             CSV
           </button>
           <button
             onClick={() => exportToPDF(filtered, { totalIncome: store.totalIncome, totalExpense: store.totalExpense, balance: store.balance })}
-            className="px-3 py-2 rounded-xl bg-muted text-xs font-bold text-muted-foreground hover:text-foreground transition-colors"
+            className="px-3 py-2 rounded-2xl clay-btn-secondary text-xs transition-colors"
             title={t("exportPDF")}
           >
             PDF
@@ -120,7 +120,7 @@ export default function HistoryPage({ store }: { store: ReturnType<typeof useFin
               key={p}
               onClick={() => { setPeriod(p); setMonthOffset(0); if (p !== "custom") setCustomDate(undefined); }}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                period === p ? "bg-primary text-primary-foreground shadow-soft" : "bg-muted text-muted-foreground"
+                period === p ? "clay-btn" : "clay-btn-secondary"
               }`}
             >
               {p === "week" ? t("week") : p === "month" ? t("month") : p === "all" ? t("all") : t("dateFilter")}
@@ -132,7 +132,7 @@ export default function HistoryPage({ store }: { store: ReturnType<typeof useFin
           <Popover>
             <PopoverTrigger asChild>
               <button className={cn(
-                "w-full flex items-center gap-2 px-4 py-3 rounded-2xl bg-card shadow-card text-sm font-medium",
+                "w-full flex items-center gap-2 px-4 py-3 clay-input text-sm font-medium",
                 !customDate && "text-muted-foreground"
               )}>
                 <CalendarIcon className="w-4 h-4" />
@@ -147,14 +147,14 @@ export default function HistoryPage({ store }: { store: ReturnType<typeof useFin
 
         {(period === "week" || period === "month") && (
           <div className="flex items-center justify-between">
-            <button onClick={() => setMonthOffset(prev => prev + 1)} className="px-3 py-1.5 rounded-xl bg-muted text-xs font-semibold">
+            <button onClick={() => setMonthOffset(prev => prev + 1)} className="px-3 py-1.5 rounded-2xl clay-btn-secondary text-xs">
               {t("previous")}
             </button>
             <span className="text-sm font-bold">{periodLabel}</span>
             <button
               onClick={() => setMonthOffset(prev => Math.max(0, prev - 1))}
               disabled={monthOffset === 0}
-              className="px-3 py-1.5 rounded-xl bg-muted text-xs font-semibold disabled:opacity-40"
+              className="px-3 py-1.5 rounded-2xl clay-btn-secondary text-xs disabled:opacity-40"
             >
               {t("next")}
             </button>
@@ -162,13 +162,13 @@ export default function HistoryPage({ store }: { store: ReturnType<typeof useFin
         )}
 
         <div className="grid grid-cols-2 gap-3">
-          <div className="p-3 rounded-2xl gradient-income text-primary-foreground">
+          <div className="p-3 clay-card bg-success text-success-foreground border-none">
             <p className="text-[10px] opacity-80">{t("income")}</p>
             <p className="text-sm font-extrabold">
               {formatMoney(filtered.filter(tx => tx.type === "income").reduce((s, tx) => s + tx.amount, 0))}
             </p>
           </div>
-          <div className="p-3 rounded-2xl gradient-expense text-primary-foreground">
+          <div className="p-3 clay-card bg-destructive text-destructive-foreground border-none">
             <p className="text-[10px] opacity-80">{t("expense")}</p>
             <p className="text-sm font-extrabold">
               {formatMoney(filtered.filter(tx => tx.type === "expense").reduce((s, tx) => s + tx.amount, 0))}
@@ -184,7 +184,7 @@ export default function HistoryPage({ store }: { store: ReturnType<typeof useFin
         ) : (
           <div className="space-y-2">
             {filtered.map((tx, i) => (
-              <div key={tx.id} className="p-3 rounded-2xl bg-card shadow-card animate-fade-in" style={{ animationDelay: `${i * 40}ms` }}>
+              <div key={tx.id} className="p-3 clay-card animate-fade-in" style={{ animationDelay: `${i * 40}ms` }}>
                 {editing?.id === tx.id ? (
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
@@ -198,24 +198,24 @@ export default function HistoryPage({ store }: { store: ReturnType<typeof useFin
                     </div>
                     <div>
                       <label className="text-[10px] font-semibold text-muted-foreground mb-1 block">{t("nominal")}</label>
-                      <div className="flex items-center bg-muted rounded-xl px-3 py-2">
+                      <div className="flex items-center clay-input px-3 py-2 bg-card">
                         <span className="text-muted-foreground text-xs font-bold mr-1">{currency.symbol}</span>
                         <input type="number" value={editing.amount} onChange={e => setEditing({ ...editing, amount: e.target.value })} className="flex-1 bg-transparent text-sm font-bold outline-none" min={1} />
                       </div>
                     </div>
                     <div>
                       <label className="text-[10px] font-semibold text-muted-foreground mb-1 block">{t("editDate")}</label>
-                      <input type="date" value={editing.date} onChange={e => setEditing({ ...editing, date: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-muted text-sm font-medium outline-none" />
+                      <input type="date" value={editing.date} onChange={e => setEditing({ ...editing, date: e.target.value })} className="w-full px-3 py-2 clay-input text-sm font-medium" />
                     </div>
                     <div>
                       <label className="text-[10px] font-semibold text-muted-foreground mb-1 block">{t("editNotes")}</label>
-                      <input value={editing.notes} onChange={e => setEditing({ ...editing, notes: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-muted text-sm outline-none" />
+                      <input value={editing.notes} onChange={e => setEditing({ ...editing, notes: e.target.value })} className="w-full px-3 py-2 clay-input text-sm" />
                     </div>
                     <div className="flex gap-2">
-                      <button onClick={handleSaveEdit} className="flex-1 py-2 rounded-xl bg-success/20 text-success text-sm font-bold flex items-center justify-center gap-1">
+                      <button onClick={handleSaveEdit} className="flex-1 py-2 rounded-2xl clay-btn-secondary flex items-center justify-center gap-1 text-success">
                         <Check className="w-4 h-4" /> {t("save")}
                       </button>
-                      <button onClick={() => setEditing(null)} className="flex-1 py-2 rounded-xl bg-muted text-muted-foreground text-sm font-bold flex items-center justify-center gap-1">
+                      <button onClick={() => setEditing(null)} className="flex-1 py-2 rounded-2xl clay-btn-secondary flex items-center justify-center gap-1">
                         <X className="w-4 h-4" /> {t("cancel")}
                       </button>
                     </div>

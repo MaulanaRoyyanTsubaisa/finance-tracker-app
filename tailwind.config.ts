@@ -81,9 +81,19 @@ export default {
       borderRadius: {
         "2xl": "1rem",
         "3xl": "1.5rem",
+        "4xl": "2rem",
+        "5xl": "2.5rem",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        'clay': '8px 8px 16px rgba(0, 0, 0, 0.05), -8px -8px 16px rgba(255, 255, 255, 0.8), inset 4px 4px 10px rgba(255, 255, 255, 0.5), inset -4px -4px 10px rgba(0, 0, 0, 0.03)',
+        'clay-sm': '4px 4px 8px rgba(0, 0, 0, 0.05), -4px -4px 8px rgba(255, 255, 255, 0.8), inset 2px 2px 5px rgba(255, 255, 255, 0.5), inset -2px -2px 5px rgba(0, 0, 0, 0.03)',
+        'clay-inset': 'inset 4px 4px 10px rgba(0, 0, 0, 0.05), inset -4px -4px 10px rgba(255, 255, 255, 0.8)',
+        'clay-active': 'inset 4px 4px 10px rgba(0, 0, 0, 0.1), inset -4px -4px 10px rgba(255, 255, 255, 0.5)',
+        'clay-dark': '8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.05), inset 4px 4px 10px rgba(255, 255, 255, 0.1), inset -4px -4px 10px rgba(0, 0, 0, 0.2)',
+        'clay-dark-inset': 'inset 4px 4px 10px rgba(0, 0, 0, 0.3), inset -4px -4px 10px rgba(255, 255, 255, 0.05)',
       },
       keyframes: {
         "accordion-down": {

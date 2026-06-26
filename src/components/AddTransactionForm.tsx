@@ -61,7 +61,7 @@ export default function AddTransactionForm({ expenseCategories, incomeCategories
               onClick={() => { setType(tp); setCategory(""); }}
               className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 type === tp
-                  ? tp === "expense" ? "gradient-expense text-primary-foreground shadow-soft" : "gradient-income text-primary-foreground shadow-soft"
+                  ? tp === "expense" ? "bg-destructive text-destructive-foreground shadow-clay" : "bg-success text-success-foreground shadow-clay"
                   : "text-muted-foreground"
               }`}
             >
@@ -73,7 +73,7 @@ export default function AddTransactionForm({ expenseCategories, incomeCategories
         {/* Amount */}
         <div>
           <label className="text-xs font-semibold text-muted-foreground mb-1 block">{t("amount")}</label>
-          <div className="flex items-center bg-card rounded-2xl shadow-card px-4 py-3">
+          <div className="flex items-center clay-input px-4 py-3 bg-card">
             <span className="text-muted-foreground font-bold mr-2">{currency.symbol}</span>
             <input
               type="number"
@@ -98,7 +98,7 @@ export default function AddTransactionForm({ expenseCategories, incomeCategories
                 onClick={() => setCategory(c)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   category === c
-                    ? "bg-primary text-primary-foreground shadow-soft"
+                    ? "clay-btn"
                     : "bg-muted text-muted-foreground"
                 }`}
               >
@@ -119,7 +119,7 @@ export default function AddTransactionForm({ expenseCategories, incomeCategories
                 value={newCat}
                 onChange={e => setNewCat(e.target.value)}
                 placeholder={t("newCategoryName")}
-                className="flex-1 px-3 py-2 rounded-xl bg-card shadow-card text-sm outline-none"
+                className="flex-1 px-3 py-2 clay-input text-sm"
               />
               <button type="button" onClick={handleAddCategory} className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-bold">
                 {t("add")}
@@ -135,7 +135,7 @@ export default function AddTransactionForm({ expenseCategories, incomeCategories
             type="date"
             value={date}
             onChange={e => setDate(e.target.value)}
-            className="w-full px-4 py-3 rounded-2xl bg-card shadow-card text-sm font-medium outline-none"
+            className="w-full px-4 py-3 clay-input text-sm font-medium"
           />
         </div>
 
@@ -146,7 +146,7 @@ export default function AddTransactionForm({ expenseCategories, incomeCategories
             value={notes}
             onChange={e => setNotes(e.target.value)}
             placeholder={t("notesPlaceholder")}
-            className="w-full px-4 py-3 rounded-2xl bg-card shadow-card text-sm outline-none"
+            className="w-full px-4 py-3 clay-input text-sm"
             maxLength={100}
           />
         </div>
@@ -154,7 +154,7 @@ export default function AddTransactionForm({ expenseCategories, incomeCategories
         {/* Submit */}
         <button
           type="submit"
-          className="w-full py-4 rounded-2xl gradient-hero text-primary-foreground font-extrabold text-base shadow-soft active:scale-[0.98] transition-transform"
+          className="w-full py-4 clay-btn text-base"
         >
           {type === "expense" ? t("addExpense") : t("addIncome")}
         </button>

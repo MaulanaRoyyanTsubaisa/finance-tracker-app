@@ -67,7 +67,7 @@ export default function ReminderSettingsButton() {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
-          className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+          className="w-10 h-10 rounded-2xl clay-btn-secondary flex items-center justify-center transition-colors"
           title={lang === "id" ? "Reminder Harian" : "Daily Reminder"}
         >
           {settings.enabled ? <Bell className="w-5 h-5" /> : <BellOff className="w-5 h-5" />}

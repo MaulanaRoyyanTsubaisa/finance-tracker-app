@@ -150,7 +150,7 @@ export default function OnboardingPage() {
 
         <button
           onClick={next}
-          className="w-full py-4 rounded-2xl gradient-hero text-primary-foreground font-extrabold text-base shadow-soft active:scale-[0.98] transition-transform"
+          className="w-full py-4 clay-btn text-base"
         >
           {isLast
             ? lang === "id"

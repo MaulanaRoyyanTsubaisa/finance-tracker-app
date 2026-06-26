@@ -16,7 +16,7 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
   const bgColor = CATEGORY_COLORS[budget.category] || "bg-muted";
 
   return (
-    <div className="p-4 rounded-2xl bg-card shadow-card animate-fade-in">
+    <div className="p-4 clay-card animate-fade-in">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <div className={`w-3 h-3 rounded-full ${bgColor}`} />
@@ -24,7 +24,7 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
         </div>
         <span className="text-xs font-semibold text-muted-foreground">{pctNum}%</span>
       </div>
-      <div className="h-2.5 rounded-full bg-muted overflow-hidden">
+      <div className="h-3 rounded-full bg-input shadow-clay-inset overflow-hidden">
         <div
           className={`h-full rounded-full ${barColor} transition-all duration-700`}
           style={{ width: `${pctNum}%` }}

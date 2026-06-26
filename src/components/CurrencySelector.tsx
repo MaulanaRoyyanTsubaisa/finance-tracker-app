@@ -10,7 +10,7 @@ export default function CurrencySelector() {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
-          className="h-10 px-3 rounded-xl bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground hover:text-foreground transition-colors gap-1"
+          className="h-10 px-3 rounded-2xl clay-btn-secondary flex items-center justify-center text-xs font-bold gap-1"
           title="Currency"
         >
           {currency.symbol}

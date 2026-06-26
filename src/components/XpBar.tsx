@@ -6,7 +6,7 @@ export default function XpBar({ xp }: { xp: number }) {
   const { t } = useLanguage();
 
   return (
-    <div className="p-4 rounded-2xl bg-card shadow-card animate-fade-in">
+    <div className="p-4 clay-card animate-fade-in">
       <div className="flex items-center justify-between mb-2">
         <div>
           <span className="text-xs text-muted-foreground font-medium">{t("level")}</span>
@@ -14,9 +14,9 @@ export default function XpBar({ xp }: { xp: number }) {
         </div>
         <span className="text-lg font-extrabold text-primary">{xp} XP</span>
       </div>
-      <div className="h-3 rounded-full bg-muted overflow-hidden">
+      <div className="h-3 rounded-full bg-input shadow-clay-inset overflow-hidden">
         <div
-          className="h-full rounded-full gradient-hero transition-all duration-700"
+          className="h-full rounded-full bg-primary shadow-clay transition-all duration-700"
           style={{ width: `${Math.round(progress * 100)}%` }}
         />
       </div>
