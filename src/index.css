@@ -118,19 +118,19 @@
 
 @layer utilities {
   .clay-card {
-    @apply bg-card rounded-[2rem] shadow-clay border border-white/40 dark:border-white/5;
+    @apply bg-card rounded-[2rem] shadow-clay dark:shadow-clay-dark border border-white/40 dark:border-white/5;
   }
   .clay-card-primary {
-    @apply bg-primary text-primary-foreground rounded-[2rem] shadow-clay border border-white/20 dark:border-white/5;
+    @apply bg-primary text-primary-foreground rounded-[2rem] shadow-clay dark:shadow-clay-dark border border-white/20 dark:border-white/5;
   }
   .clay-btn {
-    @apply bg-primary text-primary-foreground rounded-2xl shadow-clay active:shadow-clay-active active:scale-[0.98] transition-all font-bold;
+    @apply bg-primary text-primary-foreground rounded-2xl shadow-clay dark:shadow-clay-dark active:shadow-clay-active dark:active:shadow-clay-dark-inset active:scale-[0.98] transition-all font-bold;
   }
   .clay-btn-secondary {
-    @apply bg-secondary text-secondary-foreground rounded-2xl shadow-clay active:shadow-clay-active active:scale-[0.98] transition-all font-bold;
+    @apply bg-secondary text-secondary-foreground rounded-2xl shadow-clay dark:shadow-clay-dark active:shadow-clay-active dark:active:shadow-clay-dark-inset active:scale-[0.98] transition-all font-bold;
   }
   .clay-input {
-    @apply bg-input/50 rounded-2xl shadow-clay-inset outline-none focus:ring-2 ring-primary border-none transition-all;
+    @apply bg-input/50 rounded-2xl shadow-clay-inset dark:shadow-clay-dark-inset outline-none focus:ring-2 ring-primary border border-transparent dark:border-white/5 transition-all;
   }
   
   .glass-card {
